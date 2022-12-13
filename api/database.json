@@ -1,5 +1,14 @@
 {
-  "plumbers": [],
+  "plumbers": [
+    {
+      "id": 1,
+      "name": "Maude"
+    },
+    {
+      "id": 2,
+      "name": "Merle"
+    }
+  ],
   "completions": [],
   "requests": [
     {
@@ -10,11 +19,18 @@
       "neededBy": "2021-08-27"
     },
     {
-      "description": "Replace sink disposal",
-      "address": "123 Hillwood Ln",
-      "budget": "200",
-      "neededBy": "2022-12-20",
+      "description": "Leaky Faucet",
+      "address": "123 Merry Ln",
+      "budget": "250",
+      "neededBy": "2022-12-21",
       "id": 2
+    },
+    {
+      "description": "Clogged garbage disposal",
+      "address": "4567 Sunshine St",
+      "budget": "400",
+      "neededBy": "2023-01-04",
+      "id": 3
     }
   ]
 }

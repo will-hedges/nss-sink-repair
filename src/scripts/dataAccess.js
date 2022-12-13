@@ -1,8 +1,20 @@
 const applicationState = {
     requests: [],
+    plumbers: [
+        {
+            id: 1,
+            name: "Maude",
+        },
+        {
+            id: 2,
+            name: "Merle",
+        },
+    ],
 };
 
 const API = "http://localhost:8088";
+
+const mainContainer = document.querySelector("#container");
 
 export const fetchRequests = () => {
     return fetch(`${API}/requests`)
@@ -17,6 +29,18 @@ export const getRequests = () => {
     return applicationState.requests.map((req) => ({ ...req }));
 };
 
+export const fetchPlumbers = () => {
+    return fetch(`${API}/plumbers`)
+        .then((response) => response.json())
+        .then((data) => {
+            applicationState.plumbers = data;
+        });
+};
+
+export const getPlumbers = () => {
+    return applicationState.plumbers.map((plumber) => ({ ...plumber }));
+};
+
 export const sendRequest = (userServiceRequest) => {
     const fetchOptions = {
         method: "POST",
@@ -28,5 +52,13 @@ export const sendRequest = (userServiceRequest) => {
 
     return fetch(`${API}/requests`, fetchOptions)
         .then((response) => response.json())
-        .then(() => {});
+        .then(() => {
+            mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
+        });
+};
+
+export const deleteRequest = (id) => {
+    return fetch(`${API}/requests/${id}`, { method: "DELETE" }).then(() => {
+        mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
+    });
 };
