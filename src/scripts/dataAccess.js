@@ -1,15 +1,5 @@
 const applicationState = {
     requests: [],
-    plumbers: [
-        {
-            id: 1,
-            name: "Maude",
-        },
-        {
-            id: 2,
-            name: "Merle",
-        },
-    ],
 };
 
 const API = "http://localhost:8088";
@@ -50,7 +40,7 @@ export const sendRequest = (userServiceRequest) => {
         body: JSON.stringify(userServiceRequest),
     };
 
-    return fetch(`${API}/requests`, fetchOptions)
+    return fetch(`${API}/completions`, fetchOptions)
         .then((response) => response.json())
         .then(() => {
             mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
@@ -61,4 +51,26 @@ export const deleteRequest = (id) => {
     return fetch(`${API}/requests/${id}`, { method: "DELETE" }).then(() => {
         mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
     });
+};
+
+export const saveCompletion = (completionRequest) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(completionRequest),
+    };
+
+    return fetch(`${API}/requests`, fetchOptions).then((response) =>
+        response.json()
+    );
+};
+
+export const fetchCompletions = () => {
+    return fetch(`${API}/completions`)
+        .then((response) => response.json())
+        .then((data) => {
+            applicationState.completions = data;
+        });
 };
