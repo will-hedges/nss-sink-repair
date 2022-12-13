@@ -1,21 +1,21 @@
 import { getRequests } from "./dataAccess.js";
 
 const convertRequestToListElem = (requestObj) => {
-  return `
+    return `
     <li>
-      ${requestObj.description}  
+        ${requestObj.description}  
     </li>
-  `;
+    `;
 };
 
 export const Requests = () => {
-  const requests = getRequests();
+    const requests = getRequests();
 
-  let html = `
+    let html = `
     <ul>
-      ${requests.map((request) => convertRequestToListElem(request)).join("")}
+        ${requests.map((request) => convertRequestToListElem(request)).join("")}
     </ul>
-  `;
+    `;
 
-  return html;
+    return html;
 };
