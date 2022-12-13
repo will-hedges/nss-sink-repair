@@ -41,6 +41,7 @@ export const Requests = () => {
 const mainContainer = document.querySelector("#container");
 
 mainContainer.addEventListener("click", (click) => {
+    // this is the "delete" listener
     if (click.target.id.startsWith("request--")) {
         const [, requestId] = click.target.id.split("--");
         deleteRequest(parseInt(requestId));
@@ -48,6 +49,7 @@ mainContainer.addEventListener("click", (click) => {
 });
 
 mainContainer.addEventListener("change", (event) => {
+    // this is the plumber/completion listener
     if (event.target.id === "plumbers") {
         const [requestId, plumberId] = event.target.value.split("--");
 
@@ -58,8 +60,8 @@ mainContainer.addEventListener("change", (event) => {
                 3. date_created
         */
         const completion = {
-            requestId: requestId,
-            plumberId: plumberId,
+            requestId: parseInt(requestId),
+            plumberId: parseInt(plumberId),
             date_created: Date.now(),
         };
 

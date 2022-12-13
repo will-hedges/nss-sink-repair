@@ -62,7 +62,7 @@ export const saveCompletion = (completionRequest) => {
         body: JSON.stringify(completionRequest),
     };
 
-    return fetch(`${API}/requests`, fetchOptions).then((response) =>
+    return fetch(`${API}/completions`, fetchOptions).then((response) =>
         response.json()
     );
 };

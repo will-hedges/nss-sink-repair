@@ -11,10 +11,9 @@
   ],
   "completions": [
     {
-      "description": "Broken sink bowl",
-      "address": "1234 Somestreetname",
-      "budget": "400",
-      "neededBy": "2022-12-14",
+      "requestId": "3",
+      "plumberId": "1",
+      "date_created": 1670967771619,
       "id": 1
     }
   ],
@@ -39,18 +38,6 @@
       "budget": "400",
       "neededBy": "2023-01-04",
       "id": 3
-    },
-    {
-      "requestId": "2",
-      "plumberId": "1",
-      "date_created": 1670966768929,
-      "id": 4
-    },
-    {
-      "requestId": "3",
-      "plumberId": "2",
-      "date_created": 1670966769926,
-      "id": 5
     }
   ]
 }
