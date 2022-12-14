@@ -37,6 +37,7 @@ const convertCompletionToListElem = (completionObj) => {
         </button>
     </li>`;
 };
+
 const convertRequestToListElem = (requestObj) => {
     const plumbers = getPlumbers();
 
