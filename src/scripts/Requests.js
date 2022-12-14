@@ -1,4 +1,5 @@
 import {
+    deleteCompletion,
     deleteRequest,
     getCompletions,
     getPlumbers,
@@ -31,6 +32,9 @@ const convertCompletionToListElem = (completionObj) => {
     return `
     <li>
         ${res.description}
+        <button class="completion__delete" id="completion--${completionObj.id}">
+            Delete
+        </button>
     </li>`;
 };
 const convertRequestToListElem = (requestObj) => {
@@ -95,6 +99,9 @@ mainContainer.addEventListener("click", (click) => {
     if (click.target.id.startsWith("request--")) {
         const [, requestId] = click.target.id.split("--");
         deleteRequest(parseInt(requestId));
+    } else if (click.target.id.startsWith("completion--")) {
+        const [, completionId] = click.target.id.split("--");
+        deleteCompletion(parseInt(completionId));
     }
 });
 

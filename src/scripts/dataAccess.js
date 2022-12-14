@@ -6,6 +6,12 @@ const API = "http://localhost:8088";
 
 const mainContainer = document.querySelector("#container");
 
+export const deleteCompletion = (id) => {
+    return fetch(`${API}/completions/${id}`, { method: "DELETE" }).then(() => {
+        mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
+    });
+};
+
 export const deleteRequest = (id) => {
     return fetch(`${API}/requests/${id}`, { method: "DELETE" }).then(() => {
         mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
