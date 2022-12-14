@@ -1,7 +1,11 @@
+body {
+    width: 70%;
+}
+
 .field {
     display: flex;
     flex-direction: column;
-    margin: 1rem;
+    margin: 1rem 5rem;
 }
 
 .label {
@@ -17,10 +21,52 @@
     border: 2px solid black;
 }
 
-.completion__delete, .request__delete {
-    padding: 0.5rem;
+#serviceRequests__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#serviceRequests__header h3 {
+    margin-right: 2rem;
+}
+
+ul {
+    margin: 0;
+}
+
+.service-request__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid gray;
+    padding: 0 1rem;
+}
+
+.service-request__item__description {
+    flex-basis: 70%;
+    flex-wrap: wrap;
+}
+
+
+li::before {
+    content: "🛠️";
+}
+
+.plumbers {
+    margin: 1rem 1rem;
+}
+
+.delete__button {
     background-color: maroon;
     color: white;
     font-size: 1rem;
     border: 2px solid black; 
+}
+
+.completed-requests .plumbers {
+    visibility: hidden;
+}
+
+.completed-requests li {
+    background-color: rgba(255, 0, 0, 0.2);
 }

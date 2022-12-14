@@ -24,37 +24,55 @@ const convertCompletionToListElem = (completionObj) => {
         find the request pk that matches the requestId fk on your completion
         get the description of that request object
     */
+    const plumbers = getPlumbers();
     const requests = getRequests();
     const res = requests.find(
         (request) => request.id === completionObj.requestId
     );
 
     return `
-    <li>
-        ${res.description}
-        <button class="completion__delete" id="completion--${completionObj.id}">
-            Delete
-        </button>
-    </li>`;
+    <li class="service-request__item">
+        <div class="service-request__item__description">
+            ${res.description}
+        </div>
+        <div class="service-request__item__buttons__container">
+            <select class="plumbers" id="plumbers">
+                <option value="">Choose</option>
+                    ${plumbers
+                        .map((plumber) => {
+                            return `<option value="${completionObj.id}--${plumber.id}">${plumber.name}</option>`;
+                        })
+                        .join("")}
+            </select>
+            <button class="delete__button" id="request--${completionObj.id}">
+                Delete
+            </button>
+        </div>
+    </li>
+    `;
 };
 
 const convertRequestToListElem = (requestObj) => {
     const plumbers = getPlumbers();
 
     return `
-    <li>
-        ${requestObj.description}
-        <select class="plumbers" id="plumbers">
-            <option value="">Choose</option>
-                ${plumbers
-                    .map((plumber) => {
-                        return `<option value="${requestObj.id}--${plumber.id}">${plumber.name}</option>`;
-                    })
-                    .join("")}
-        </select>
-        <button class="request__delete" id="request--${requestObj.id}">
-            Delete
-        </button>
+    <li class="service-request__item">
+        <div class="service-request__item__description">
+            ${requestObj.description}
+        </div>
+        <div class="service-request__item__buttons__container">
+            <select class="plumbers" id="plumbers">
+                <option value="">Choose</option>
+                    ${plumbers
+                        .map((plumber) => {
+                            return `<option value="${requestObj.id}--${plumber.id}">${plumber.name}</option>`;
+                        })
+                        .join("")}
+            </select>
+            <button class="delete__button" id="request--${requestObj.id}">
+                Delete
+            </button>
+        </div>
     </li>
     `;
 };
@@ -63,7 +81,7 @@ export const Completions = () => {
     const completions = getCompletions();
 
     let html = `
-    <ul>
+    <ul class="completed-requests">
         ${completions
             .map((completion) => convertCompletionToListElem(completion))
             .join("")}
@@ -83,7 +101,7 @@ export const Requests = () => {
     const pendingRequests = requests.filter(checkIfPending);
 
     let html = `
-    <ul>
+    <ul class="pending-requests">
         ${pendingRequests
             .map((request) => convertRequestToListElem(request))
             .join("")}
