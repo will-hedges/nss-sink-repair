@@ -16,3 +16,11 @@
     font-size: 1rem;
     border: 2px solid black;
 }
+
+.completion__delete, .request__delete {
+    padding: 0.5rem;
+    background-color: maroon;
+    color: white;
+    font-size: 1rem;
+    border: 2px solid black; 
+}

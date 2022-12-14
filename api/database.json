@@ -9,7 +9,20 @@
       "name": "Merle"
     }
   ],
-  "completions": [],
+  "completions": [
+    {
+      "requestId": 1,
+      "plumberId": 1,
+      "date_created": 1671035272383,
+      "id": 1
+    },
+    {
+      "requestId": 2,
+      "plumberId": 2,
+      "date_created": 1671035274164,
+      "id": 2
+    }
+  ],
   "requests": [
     {
       "id": 1,
@@ -17,6 +30,20 @@
       "address": "34445 Bianka Ports",
       "budget": 400,
       "neededBy": "2021-08-27"
+    },
+    {
+      "description": "Leaky faucet",
+      "address": "123 Main St",
+      "budget": "200",
+      "neededBy": "2022-12-21",
+      "id": 2
+    },
+    {
+      "description": "Clogged disposal",
+      "address": "4567 Sunshine Ave",
+      "budget": "400",
+      "neededBy": "2022-12-31",
+      "id": 3
     }
   ]
 }
