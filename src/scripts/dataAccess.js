@@ -60,9 +60,11 @@ export const saveCompletion = (completionRequest) => {
         body: JSON.stringify(completionRequest),
     };
 
-    return fetch(`${API}/completions`, fetchOptions).then((response) =>
-        response.json()
-    );
+    return fetch(`${API}/completions`, fetchOptions)
+        .then((response) => response.json())
+        .then(() => {
+            mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
+        });
 };
 
 export const sendRequest = (userServiceRequest) => {
