@@ -6,6 +6,33 @@ import {
     saveCompletion,
 } from "./dataAccess.js";
 
+const checkIfPending = (request) => {
+    const completions = getCompletions();
+    for (const completion of completions) {
+        if (request.id == completion.requestId) {
+            // return false because the work order is NOT pending
+            return false;
+        }
+    }
+    // return true because the ticket is still pending
+    return true;
+};
+
+const convertCompletionToListElem = (completionObj) => {
+    /*
+        find the request pk that matches the requestId fk on your completion
+        get the description of that request object
+    */
+    const requests = getRequests();
+    const res = requests.find(
+        (request) => request.id === completionObj.requestId
+    );
+
+    return `
+    <li>
+        ${res.description}
+    </li>`;
+};
 const convertRequestToListElem = (requestObj) => {
     const plumbers = getPlumbers();
 
@@ -27,16 +54,17 @@ const convertRequestToListElem = (requestObj) => {
     `;
 };
 
-const checkIfPending = (request) => {
+export const Completions = () => {
     const completions = getCompletions();
-    for (const completion of completions) {
-        if (request.id == completion.requestId) {
-            // return false because the work order is NOT pending
-            return false;
-        }
-    }
-    // return true because the ticket is still pending
-    return true;
+
+    let html = `
+    <ul>
+        ${completions
+            .map((completion) => convertCompletionToListElem(completion))
+            .join("")}
+    </ul>
+    `;
+    return html;
 };
 
 export const Requests = () => {
@@ -59,8 +87,6 @@ export const Requests = () => {
 
     return html;
 };
-
-export const Completions = () => {};
 
 const mainContainer = document.querySelector("#container");
 
