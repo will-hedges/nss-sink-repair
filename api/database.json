@@ -11,10 +11,16 @@
   ],
   "completions": [
     {
-      "requestId": "3",
-      "plumberId": "1",
-      "date_created": 1670967771619,
+      "requestId": 1,
+      "plumberId": 1,
+      "date_created": 1671031345002,
       "id": 1
+    },
+    {
+      "requestId": 2,
+      "plumberId": 2,
+      "date_created": 1671031353277,
+      "id": 2
     }
   ],
   "requests": [

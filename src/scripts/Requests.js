@@ -1,5 +1,6 @@
 import {
     deleteRequest,
+    getCompletions,
     getPlumbers,
     getRequests,
     saveCompletion,
@@ -26,17 +27,40 @@ const convertRequestToListElem = (requestObj) => {
     `;
 };
 
+const checkIfPending = (request) => {
+    const completions = getCompletions();
+    for (const completion of completions) {
+        if (request.id == completion.requestId) {
+            // return false because the work order is NOT pending
+            return false;
+        }
+    }
+    // return true because the ticket is still pending
+    return true;
+};
+
 export const Requests = () => {
+    /* 
+        filter out requests that are already in "completions"
+        go through all the completions
+        take any request that has a completionId out of requests
+        and only show "pending" requests
+    */
     const requests = getRequests();
+    const pendingRequests = requests.filter(checkIfPending);
 
     let html = `
     <ul>
-        ${requests.map((request) => convertRequestToListElem(request)).join("")}
+        ${pendingRequests
+            .map((request) => convertRequestToListElem(request))
+            .join("")}
     </ul>
     `;
 
     return html;
 };
+
+export const Completions = () => {};
 
 const mainContainer = document.querySelector("#container");
 
