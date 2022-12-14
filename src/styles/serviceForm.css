@@ -52,6 +52,14 @@ li::before {
     content: "🛠️";
 }
 
+li:nth-child(odd) {
+    background-color: lightgray;
+}
+
+li:nth-child(even) {
+    background: white;
+}
+
 .plumbers {
     margin: 1rem 1rem;
 }

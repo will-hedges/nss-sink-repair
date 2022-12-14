@@ -21,6 +21,12 @@
       "plumberId": 2,
       "date_created": 1671035274164,
       "id": 2
+    },
+    {
+      "requestId": 5,
+      "plumberId": 1,
+      "date_created": 1671050415353,
+      "id": 3
     }
   ],
   "requests": [
@@ -44,6 +50,20 @@
       "budget": "400",
       "neededBy": "2022-12-31",
       "id": 3
+    },
+    {
+      "description": "Toilet won't stop running",
+      "address": "97 Cantstop Ln",
+      "budget": "400",
+      "neededBy": "2022-12-15",
+      "id": 4
+    },
+    {
+      "description": "Here's another problem",
+      "address": "Someaddress",
+      "budget": "400",
+      "neededBy": "2022-12-31",
+      "id": 5
     }
   ]
 }

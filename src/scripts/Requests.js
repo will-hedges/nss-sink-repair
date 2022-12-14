@@ -56,7 +56,7 @@ const convertRequestToListElem = (requestObj) => {
     const plumbers = getPlumbers();
 
     return `
-    <li class="service-request__item">
+    <li class="service-request__item ${classColor}">
         <div class="service-request__item__description">
             ${requestObj.description}
         </div>
